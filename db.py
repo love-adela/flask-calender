@@ -7,8 +7,10 @@ cursor.execute('''
         create table if not exists account(
         id serial primary key, 
         username text not null,
-        password text not null
+        password_hash text not null,
+        password_salt text not null
         );
+        create index if not exists ix_account_username on account(username);
   ''')
 
 cursor.close()
